@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Contest Registration</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005F8B;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Contest Registration</h1>
+    <form id="registration-form" action="process_form.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="song">Song Title:</label>
+        <input type="text" id="song" name="song" required>
+
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genre" required>
+            <option value="rock">Rock</option>
+            <option value="pop">Pop</option>
+            <option value="hip-hop">Hip Hop</option>
+            <!-- Add more genre options -->
+        </select>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <h2>List of Participants:</h2>
+    <ul id="participant-list">
+        <!-- Participant data will be displayed here -->
+    </ul>
+
+    <script>
+        // JavaScript to handle form submission and participant list
+        document.getElementById("registration-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get form data
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var song = document.getElementById("song").value;
+            var genre = document.getElementById("genre").value;
+
+            // Create a list item to display the participant's information
+            var listItem = document.createElement("li");
+            listItem.innerHTML = "<strong>Name:</strong> " + name + ", <strong>Email:</strong> " + email + ", <strong>Song:</strong> " + song + ", <strong>Genre:</strong> " + genre;
+
+            // Append the list item to the participant list
+            document.getElementById("participant-list").appendChild(listItem);
+
+            // Clear the form
+            document.getElementById("registration-form").reset();
+        });
+    </script>
+</body>
+</html>
